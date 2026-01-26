@@ -1,11 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter, usePathname } from 'next/navigation'; // add this
-
+import { useRouter, usePathname } from 'next/navigation';
 import pabLogo from '../../Logo/pablogo.png';
 
 interface NavLink {
@@ -16,7 +15,10 @@ interface NavLink {
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<string>('hero'); // NEW
+  const [activeSection, setActiveSection] = useState<string>('hero');
+
+  const router = useRouter();
+  const pathname = usePathname();
 
   const navLinks: NavLink[] = [
     { name: 'Home', href: 'hero' },
@@ -27,46 +29,50 @@ export const Navbar: React.FC = () => {
     { name: 'Contact', href: 'contact' },
   ];
 
-  // Scroll handler for navbar background and active section
+  // Smooth scroll handler (mobile-friendly + hides hash)
+  const handleScrollTo = useCallback(
+    (id: string) => {
+      setIsOpen(false); // close mobile menu
+
+      // Replace URL without hash
+      router.replace('/', { scroll: false });
+
+      // Delay scroll to wait for menu collapse animation
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150); // matches mobile menu animation
+    },
+    [router]
+  );
+
+  // Scroll listener for navbar background & active section
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 20);
 
       // Detect active section
-      const sections = navLinks.map((link) =>
-        document.getElementById(link.href)
-      );
+      for (let i = 0; i < navLinks.length; i++) {
+        const section = document.getElementById(navLinks[i].href);
+        if (!section) continue;
 
-      sections.forEach((section, i) => {
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          if (rect.top <= 80 && rect.bottom >= 80) {
-            setActiveSection(navLinks[i].href);
-          }
+        const rect = section.getBoundingClientRect();
+        // 80px offset for navbar height
+        if (rect.top <= 80 && rect.bottom >= 80) {
+          setActiveSection(navLinks[i].href);
+          break; // stop loop once active section found
         }
-      });
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // set initial state on mount
+
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const router = useRouter();
-  const pathname = usePathname();
-
-  const handleScrollTo = (id: string) => {
-    if (pathname !== '/') {
-      // Navigate to home first, then scroll
-      router.push(`/#${id}`); // Next.js automatically preserves hash scroll
-      setIsOpen(false);
-    } else {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setIsOpen(false);
-      }
-    }
-  };
+  }, [navLinks]);
 
   return (
     <nav
