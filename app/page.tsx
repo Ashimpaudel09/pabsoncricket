@@ -19,7 +19,6 @@ export default function Home() {
       <About />
       <Teams />
       <Schedule />
-
       <PointsTable />
       <Sponsors />
       <Gallery />
