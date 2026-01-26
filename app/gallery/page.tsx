@@ -15,7 +15,7 @@ export default function GalleryPage() {
 
       {/* Go Back Button */}
       <div className="sticky top-20 z-50 max-w-7xl mx-auto px-4 pl-0 sm:px-6 lg:px-8">
-        <Link href="/">
+        <Link href="/#gallery">
           <Button
             variant="outline"
             className="rounded-full px-6 py-3 font-bold border-slate-300 flex items-center gap-2"

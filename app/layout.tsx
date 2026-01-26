@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: 'Pabson Cricket League',
     images: [
       {
-        url: 'https://pabsoncricketleague.com/pablogo.ico',
+        url: 'https://res.cloudinary.com/dmlntyta1/image/upload/v1769432426/pablogo_sreyip.png',
         width: 1200,
         height: 630,
         alt: 'Pabson Cricket League',
