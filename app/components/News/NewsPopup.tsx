@@ -6,16 +6,39 @@ import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 interface NewsPopupProps {
   images: string[];
+  open?: boolean; // control from parent (e.g., Navbar click)
+  onClose?: () => void; // callback when popup is closed
 }
 
-const NewsPopup: React.FC<NewsPopupProps> = ({ images }) => {
+// Singleton flag to show popup only once per session
+let hasNewsPopupShown = false;
+
+const NewsPopup: React.FC<NewsPopupProps> = ({ images, open, onClose }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(0);
 
-  // Open popup on page load
+  // Function to open popup safely
+  const showPopup = () => {
+    setIsOpen(true);
+    hasNewsPopupShown = true;
+  };
+
+  // Open on first page load
   useEffect(() => {
-    if (images.length > 0) setIsOpen(true);
+    if (!hasNewsPopupShown && images.length > 0) {
+      showPopup();
+    }
   }, [images]);
+
+  // Handle controlled open prop (e.g., from Navbar click)
+  useEffect(() => {
+    if (open) showPopup();
+  }, [open]);
+
+  const closePopup = () => {
+    setIsOpen(false);
+    if (onClose) onClose();
+  };
 
   const nextImage = () => {
     setCurrentImage((prev) => (prev + 1) % images.length);
@@ -33,7 +56,7 @@ const NewsPopup: React.FC<NewsPopupProps> = ({ images }) => {
       if (!isOpen) return;
       if (e.key === 'ArrowRight') nextImage();
       if (e.key === 'ArrowLeft') prevImage();
-      if (e.key === 'Escape') setIsOpen(false);
+      if (e.key === 'Escape') closePopup();
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
@@ -49,14 +72,10 @@ const NewsPopup: React.FC<NewsPopupProps> = ({ images }) => {
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-  };
-
-  const handleSwipe = () => {
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 50) {
-      if (diff > 0) nextImage(); // swipe left → next
-      else prevImage(); // swipe right → prev
+      if (diff > 0) nextImage();
+      else prevImage();
     }
   };
 
@@ -91,7 +110,7 @@ const NewsPopup: React.FC<NewsPopupProps> = ({ images }) => {
 
             {/* Close Button */}
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={closePopup}
               className="absolute top-4 right-4 bg-black/70 p-3 rounded-full text-white hover:text-red-600 transition-colors"
             >
               <X size={24} />
