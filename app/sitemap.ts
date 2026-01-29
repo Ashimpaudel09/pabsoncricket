@@ -5,9 +5,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: `${baseUrl}/`, lastModified: new Date() },
-    { url: `${baseUrl}/fixtures`, lastModified: new Date() },
-    { url: `${baseUrl}/teams`, lastModified: new Date() },
+    { url: `${baseUrl}/gallery`, lastModified: new Date() },
+    { url: `${baseUrl}/results`, lastModified: new Date() },
     { url: `${baseUrl}/matches`, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date() },
   ];
 }
