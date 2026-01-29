@@ -68,9 +68,13 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: '/pablogo.ico',
-    shortcut: '/pablogo.ico',
-  },
+  icon: [
+    { url: '/favicon.ico' },
+    { url: '/favicon.svg', type: 'image/svg+xml' },
+  ],
+  apple: '/apple-touch-icon.png',
+},
+
 
   openGraph: {
     title:
