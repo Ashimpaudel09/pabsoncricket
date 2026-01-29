@@ -25,28 +25,19 @@ export const metadata: Metadata = {
     'Pabson Cricket League is a leading school and under-15 cricket league in Nepal. Follow match schedules, results, points table, teams and highlights from Nepal’s growing youth cricket competition.',
 
   keywords: [
-    // Brand
     'Pabson Cricket League',
     'Pabson League',
     'Pabson Cricket',
-
-    // Core intent
     'Cricket League Nepal',
     'School Cricket League Nepal',
     'Under-15 Cricket League Nepal',
     'Youth Cricket League Nepal',
-
-    // Tournament-related
     'Nepal Cricket Tournament',
     'School Cricket Tournament Nepal',
     'Under 15 Cricket Tournament Nepal',
-
-    // Search variations
     'Cricket League in Nepal',
     'Cricket Tournament Nepal',
     'Nepal Youth Cricket',
-
-    // Long-tail
     'School level cricket league in Nepal',
     'Under 15 school cricket league Nepal',
   ],
@@ -67,15 +58,20 @@ export const metadata: Metadata = {
     },
   },
 
+  /** ✅ FAVICONS & APP ICONS */
   icons: {
-  icon: [
-    { url: '/favicon.ico' },
-    { url: '/favicon.svg', type: 'image/svg+xml' },
-  ],
-  apple: '/apple-touch-icon.png',
-},
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: '/apple-touch-icon.png',
+  },
 
+  /** ✅ PWA MANIFEST */
+  manifest: '/site.webmanifest',
 
+  /** ✅ OPEN GRAPH */
   openGraph: {
     title:
       'Pabson Cricket League | School & Under-15 Cricket League in Nepal',
@@ -95,16 +91,16 @@ export const metadata: Metadata = {
     type: 'website',
   },
 
+  /** ✅ TWITTER */
   twitter: {
     card: 'summary_large_image',
     title:
       'Pabson Cricket League | School & Under-15 Cricket League',
     description:
       'Follow fixtures, results and highlights from Nepal’s leading school and under-15 cricket league.',
-    images: ['/pablogo.png'],
+    images: ['/android-chrome-512x512.png'],
   },
 };
-
 
 export default function RootLayout({
   children,
