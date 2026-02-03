@@ -156,7 +156,7 @@ export const Hero = () => {
                 {/* Using standard img tag to prevent Next.js fetchPriority warnings in this environment */}
                 <img
 
-                  src="/three/three_3.jpeg"
+                  src="/yubraj.jpeg"
                   alt="Nepali Cricket Stadium Crowd"
                   className="absolute inset-0 w-auto h-auto object-fill"
                 />
