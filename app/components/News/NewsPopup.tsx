@@ -22,11 +22,11 @@ const NewsPopup: React.FC<NewsPopupProps> = ({ images, open, onClose }) => {
     hasNewsPopupShown = true;
   };
 
-  useEffect(() => {
-    if (!hasNewsPopupShown && images.length > 0) {
-      showPopup();
-    }
-  }, [images]);
+  // useEffect(() => {
+  //   if (!hasNewsPopupShown && images.length > 0) {
+  //     showPopup();
+  //   }
+  // }, [images]);
 
   useEffect(() => {
     if (open) showPopup();
