@@ -16,6 +16,9 @@ export const Hero = () => {
   const images = [
     'province/gandaki.jpg',
     'province/kathmandu.jpg',
+    'province/koshi.jpeg',
+    'province/bagmati.jpeg',
+    'province/sudur.jpeg'
 
   ];
   const [openPop, setOpenPop] = useState(false);
