@@ -19,8 +19,8 @@ export const Hero = () => {
     'province/koshi.jpeg',
     'province/bagmati.jpeg',
     'province/sudur.jpeg',
-    'province/karnali.jpeg',
-
+    'province/karnali.jpg',
+//hel
 
   ];
   const [openPop, setOpenPop] = useState(false);
