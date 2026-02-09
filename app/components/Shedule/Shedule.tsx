@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, Calendar, MapPin, Play, Trophy, Tv } from 'lucide-react';
+import { ArrowRight, Calendar, Play, Circle } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import Link from 'next/link';
 
@@ -11,203 +11,124 @@ type ScheduleProps = {
 
 export const Schedule = ({ showAll = false }: ScheduleProps) => {
   const allMatches = [
-    {
-      id: 1,
-      date: 'Magh 24',
-      time: '09:30 AM',
-      t1: 'Lions',
-      t2: 'Warriors',
-      v: 'T.U. Ground',
-      liveLink: 'https://youtube.com/live/example1',
-      status: 'Live',
-    },
-    {
-      id: 2,
-      date: 'Magh 24',
-      time: '01:30 PM',
-      t1: 'Riders',
-      t2: 'Titans',
-      v: 'T.U. Ground',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 3,
-      date: 'Magh 25',
-      time: '09:30 AM',
-      t1: 'Thunder',
-      t2: 'Panthers',
-      v: 'Mulpani',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 4,
-      date: 'Magh 26',
-      time: '01:30 PM',
-      t1: 'Kings',
-      t2: 'Royals',
-      v: 'Mulpani',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 5,
-      date: 'Magh 27',
-      time: '09:30 AM',
-      t1: 'Eagles',
-      t2: 'Falcons',
-      v: 'T.U. Ground',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 6,
-      date: 'Magh 28',
-      time: '01:30 PM',
-      t1: 'Sharks',
-      t2: 'Wolves',
-      v: 'Mulpani',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 7,
-      date: 'Magh 29',
-      time: '09:30 AM',
-      t1: 'Knights',
-      t2: 'Giants',
-      v: 'T.U. Ground',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 8,
-      date: 'Falgun 1',
-      time: '01:30 PM',
-      t1: 'Rangers',
-      t2: 'Pirates',
-      v: 'Mulpani',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 9,
-      date: 'Falgun 2',
-      time: '09:30 AM',
-      t1: 'Titans',
-      t2: 'Royals',
-      v: 'T.U. Ground',
-      liveLink: '',
-      status: 'Upcoming',
-    },
-    {
-      id: 10,
-      date: 'Falgun 3',
-      time: '01:30 PM',
-      t1: 'Panthers',
-      t2: 'Lions',
-      v: 'Mulpani',
-      liveLink: '',
-      status: 'Upcoming',
-    },
+    { id: 1, date: '28TH MAGH, 2082', time: '8:00 AM', t1: 'BAGMATI', t2: 'SUDURPASCHIM', liveLink: 'hel', status: 'upcoming' },
+    { id: 2, date: '28TH MAGH, 2082', time: '1:00 PM', t1: 'KATHMANDU', t2: 'GANDAKI', liveLink: '', status: 'Upcoming' },
+    { id: 3, date: '29TH MAGH, 2082', time: '9:00 AM', t1: 'GANDAKI', t2: 'KOSHI', liveLink: '', status: 'Upcoming' },
+    { id: 4, date: '29TH MAGH, 2082', time: '1:00 PM', t1: 'SUDURPASCHIM', t2: 'MADHESH', liveLink: '', status: 'Upcoming' },
+    { id: 5, date: '1 FALGUN, 2082', time: '9:00 AM', t1: 'KOSHI', t2: 'LUMBINI', liveLink: '', status: 'Upcoming' },
+    { id: 6, date: '1 FALGUN, 2082', time: '1:00 PM', t1: 'MADHESH', t2: 'KARNALI', liveLink: '', status: 'Upcoming' },
+    { id: 7, date: '2 FALGUN, 2082', time: '9:00 AM', t1: 'LUMBINI', t2: 'KATHMANDU', liveLink: '', status: 'Upcoming' },
+    { id: 8, date: '2 FALGUN, 2082', time: '1:00 PM', t1: 'KARNALI', t2: 'BAGMATI', liveLink: '', status: 'Upcoming' },
+    { id: 9, date: '3 FALGUN, 2082', time: '9:00 AM', t1: 'KATHMANDU', t2: 'KOSHI', liveLink: '', status: 'Upcoming' },
+    { id: 10, date: '3 FALGUN, 2082', time: '1:00 PM', t1: 'BAGMATI', t2: 'MADHESH', liveLink: '', status: 'Upcoming' },
   ];
 
-  const matches = showAll ? allMatches : allMatches.slice(0, 3);
+  const matches = showAll ? allMatches : allMatches.slice(0, 4);
 
-  const openLive = (url: string) => {
-    window.open(url, '_blank', 'noopener,noreferrer');
+  const getLogoPath = (name: string) => `/Team/${name.toLowerCase()}.jpeg`;
+
+  // Muted, Professional Team Accents
+  const getTeamAccent = (name: string) => {
+    const accents: Record<string, string> = {
+      BAGMATI: '#b91c1c',      // Deep Red
+      SUDURPASCHIM: '#eab308', // Gold
+      KATHMANDU: '#1e3a8a',    // Navy Blue
+      GANDAKI: '#ea580c',      // Burnt Orange
+      KOSHI: '#15803d',        // Forest Green
+      MADHESH: '#be123c',       // Rose Red
+      LUMBINI: '#6d28d9',      // Deep Purple
+      KARNALI: '#0369a1',      // Ocean Blue
+    };
+    return accents[name] || '#475569';
   };
 
   return (
-    <section
-      className={`py-24 ${showAll ? 'min-h-screen py-32' : 'bg-white border-y border-slate-100'}`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-3 py-1.5 rounded-full font-bold text-xs mb-2">
-              <Calendar className="h-3 w-3" />
-              <span>FIXTURES</span>
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-1">
-              {showAll ? 'All Fixtures' : 'Upcoming Fixtures'}
-            </h2>
-            <p className="text-slate-600 text-sm max-w-2xl mx-auto">
-              Check out upcoming matches, dates, venues, and kickoff times
-            </p>
-          </div>
+    <section className="py-20 bg-white">
+      <div className="max-w-5xl mx-auto px-4">
+        
+        {/* Minimalist Professional Header */}
+        <div className="flex flex-col items-center mb-16">
+          <h2 className="text-4xl font-black italic tracking-tighter text-slate-900 mb-2">
+            PCL <span className="text-red-600">2082</span>
+          </h2>
+          <div className="h-1 w-20 bg-slate-900 rounded-full" />
+          <p className="mt-4 text-xs font-bold text-slate-500 tracking-[0.3em] uppercase">Official Match Schedule</p>
         </div>
 
-        {/* Matches */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="space-y-6">
           {matches.map((m) => (
-            <div
-              key={m.id}
-              className="bg-white border border-slate-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
-            >
-              {/* Top: Date and Status */}
-              <div className="flex justify-between items-center bg-slate-50 px-6 py-3 border-b border-slate-100">
-                <div className="text-center">
-                  <p className="font-black text-xl">{m.date}</p>
-                  <p className="text-sm text-slate-500">{m.time}</p>
+            <div key={m.id} className="relative max-w-4xl mx-auto">
+              
+              {/* Main Container: Skewed Row */}
+              <div className="flex items-center gap-0 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                
+                {/* Team 1 Banner */}
+                <div className="flex-1 flex items-center bg-slate-50 h-20 md:h-24 border-l-8" 
+                     style={{ borderColor: getTeamAccent(m.t1) }}>
+                  <div className="px-4 md:px-8 flex items-center gap-4">
+                    <img src={getLogoPath(m.t1)} className="h-10 w-10 md:h-14 md:w-14 object-contain grayscale-[0.2]" alt="" />
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-bold text-slate-400">TEAM ONE</span>
+                      <span className="text-sm md:text-xl font-black text-slate-800">{m.t1}</span>
+                    </div>
+                  </div>
                 </div>
-                <span
-                  className={`px-3 py-1 rounded-full text-xs font-bold ${m.status === 'Live' ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-500'}`}
-                >
-                  {m.status}
-                </span>
+
+                {/* VS Divider */}
+                <div className="bg-slate-900 text-white h-20 md:h-24 px-4 md:px-8 flex items-center justify-center -skew-x-12 z-10 border-x-4 border-white">
+                  <span className="skew-x-12 font-black italic text-sm md:text-lg">VS</span>
+                </div>
+
+                {/* Team 2 Banner */}
+                <div className="flex-1 flex items-center justify-end bg-slate-50 h-20 md:h-24 border-r-8 text-right"
+                     style={{ borderColor: getTeamAccent(m.t2) }}>
+                  <div className="px-4 md:px-8 flex items-center gap-4">
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-bold text-slate-400">TEAM TWO</span>
+                      <span className="text-sm md:text-xl font-black text-slate-800">{m.t2}</span>
+                    </div>
+                    <img src={getLogoPath(m.t2)} className="h-10 w-10 md:h-14 md:w-14 object-contain grayscale-[0.2]" alt="" />
+                  </div>
+                </div>
               </div>
 
-              {/* Middle: Teams */}
-              <div className="flex items-center justify-between px-6 py-8 border-b border-slate-100">
-                <span className="font-bold text-lg md:text-xl uppercase">
-                  {m.t1}
-                </span>
-                <span className="text-slate-300 font-black">VS</span>
-                <span className="font-bold text-lg md:text-xl uppercase">
-                  {m.t2}
-                </span>
+              {/* Info Bar: Fixed below */}
+              <div className="flex justify-between items-center px-6 py-2 bg-slate-100/50 mt-1 rounded-b-lg">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-1 text-slate-600 font-bold text-[10px] md:text-xs">
+                    <Calendar size={12} /> {m.date}
+                  </div>
+                  <div className="text-red-600 font-black italic text-[10px] md:text-xs">
+                    {m.time}
+                  </div>
+                </div>
+
+                {/* Subtle Status */}
+                <div className="flex items-center gap-2">
+                  {m.status === 'Live' ? (
+                    <div className="flex items-center gap-1 text-red-600 animate-pulse font-black text-[10px]">
+                      <Circle size={8} fill="currentColor" /> LIVE NOW
+                    </div>
+                  ) : (
+                    <span className="text-[10px] font-bold text-slate-400 tracking-tighter uppercase italic">Upcoming</span>
+                  )}
+                  {m.liveLink && (
+                    <button onClick={() => window.open(m.liveLink)} className="ml-2 bg-slate-900 text-white p-1.5 rounded-md hover:bg-red-600 transition-colors">
+                      <Play size={10} fill="white" />
+                    </button>
+                  )}
+                </div>
               </div>
 
-              {/* Bottom: Venue + Button */}
-              <div className="flex flex-col sm:flex-row items-center justify-between px-6 py-4 gap-3">
-                <div className="flex items-center gap-2 text-slate-500 font-medium">
-                  <MapPin className="h-4 w-4" />
-                  {m.v}
-                </div>
-                {m.liveLink ? (
-                  <Button
-                    onClick={() => openLive(m.liveLink)}
-                    className="bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl w-full sm:w-auto flex items-center justify-center gap-2"
-                  >
-                    <Play className="h-4 w-4" /> Watch Live
-                  </Button>
-                ) : (
-                  <Button
-                    variant="outline"
-                    disabled
-                    className="bg-slate-100 text-slate-400 border-slate-200 font-bold w-full sm:w-auto cursor-not-allowed"
-                  >
-                    Upcoming
-                  </Button>
-                )}
-              </div>
             </div>
           ))}
         </div>
 
-        {/* Footer CTA */}
         {!showAll && (
-          <div className="mt-12 text-center">
+          <div className="mt-16 text-center">
             <Link href="/schedule">
-              <Button
-                variant="outline"
-                className="rounded-full px-8 py-6 font-bold border-slate-300"
-              >
-                View Full Schedule <ArrowRight />
+              <Button variant="ghost" className="font-bold text-slate-500 hover:text-slate-900">
+                VIEW FULL FIXTURES <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>

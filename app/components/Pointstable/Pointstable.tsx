@@ -10,58 +10,60 @@ import {
   TableRow,
 } from '@/app/components/ui/table';
 
+// 1. Define the shape of the statistics object
+interface TeamStat {
+  p: number;   // Matches Played
+  w: number;   // Won
+  l: number;   // Lost
+  pts: number; // Points
+  nrr: string; // Net Run Rate (string to preserve decimals like "0.000")
+}
+
+// 2. EDITABLE DATA: Update these numbers to change the table standings
+// The Record<string, TeamStat> prevents the indexing error you encountered.
+const teamStats: Record<string, TeamStat> = {
+  'Kathmandu Capitals':    { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'Lumbini Monks':         { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'Madhesh Royals':        { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'SudurPaschim Rising':   { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'Bagmati Challengers':   { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'Karnali HighLanders':   { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'Gandaki Eagles':        { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+  'Koshi Strikers':        { p: 0, w: 0, l: 0, pts: 0, nrr: '0.000' },
+};
+
 export const PointsTable = () => {
-  const tableData = [
-    {
-      pos: 1,
-      team: 'Kathmandu Lions',
-      p: 5,
-      w: 4,
-      l: 1,
-      pts: 8,
-      nrr: '+1.250',
-    },
-    {
-      pos: 2,
-      team: 'Lalitpur Warriors',
-      p: 5,
-      w: 3,
-      l: 2,
-      pts: 6,
-      nrr: '+0.850',
-    },
-    {
-      pos: 3,
-      team: 'Bhaktapur Riders',
-      p: 5,
-      w: 3,
-      l: 2,
-      pts: 6,
-      nrr: '+0.450',
-    },
-    {
-      pos: 4,
-      team: 'Himalayan Titans',
-      p: 5,
-      w: 2,
-      l: 3,
-      pts: 4,
-      nrr: '-0.120',
-    },
-    { pos: 5, team: 'Valley Thunder', p: 5, w: 2, l: 3, pts: 4, nrr: '-0.550' },
-    { pos: 6, team: 'Peak Panthers', p: 5, w: 1, l: 4, pts: 2, nrr: '-1.100' },
-  ];
+  // 3. Transform the object into a displayable array
+  const displayData = Object.keys(teamStats).map((name) => ({
+    name,
+    // Generates path like: /Team/kathmandu.jpeg
+    logo: `/Team/${name.split(' ')[0].toLowerCase()}.jpeg`,
+    ...teamStats[name],
+  }));
+
+  // 4. DYNAMIC SORTING: Ranks by Points (desc), then NRR (desc)
+  const sortedData = [...displayData].sort((a, b) => {
+    if (b.pts !== a.pts) {
+      return b.pts - a.pts;
+    }
+    return parseFloat(b.nrr) - parseFloat(a.nrr);
+  });
 
   return (
     <section id="points-table" className="py-24 bg-white">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header Section */}
         <div className="text-center mb-12">
           <h2 className="text-blue-600 font-bold uppercase tracking-widest mb-2 text-sm">
             Standings
           </h2>
           <h3 className="text-4xl font-black text-slate-900">Points Table</h3>
+          <p className="text-slate-500 mt-2 text-sm italic">
+            Dynamically updated based on team performance
+          </p>
         </div>
 
+        {/* Table Section */}
         <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl">
           <Table>
             <TableHeader className="bg-slate-50">
@@ -77,25 +79,46 @@ export const PointsTable = () => {
             </TableHeader>
 
             <TableBody>
-              {tableData.map((row) => (
-                <TableRow key={row.team}>
-                  <TableCell className="text-center font-bold text-slate-500">
-                    {row.pos}
+              {sortedData.map((row, index) => (
+                <TableRow 
+                  key={row.name} 
+                  className="hover:bg-slate-50/50 transition-colors group"
+                >
+                  {/* Position */}
+                  <TableCell className="text-center font-bold text-slate-400 group-hover:text-blue-600">
+                    {index + 1}
                   </TableCell>
+
+                  {/* Team Name & Logo */}
                   <TableCell className="font-bold text-slate-900">
-                    {row.team}
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center overflow-hidden shadow-sm">
+                        <img 
+                          src={row.logo} 
+                          alt={`${row.name} logo`}
+                          className="w-full h-full object-contain"
+                          onError={(e) => {
+                            // Hides broken image icon if logo is missing
+                            (e.target as HTMLImageElement).style.opacity = '0';
+                          }}
+                        />
+                      </div>
+                      {row.name}
+                    </div>
                   </TableCell>
+
+                  {/* Stats */}
                   <TableCell className="text-center">{row.p}</TableCell>
-                  <TableCell className="text-center font-bold text-green-600">
+                  <TableCell className="text-center font-semibold text-green-600">
                     {row.w}
                   </TableCell>
-                  <TableCell className="text-center font-bold text-red-500">
+                  <TableCell className="text-center font-semibold text-red-500">
                     {row.l}
                   </TableCell>
                   <TableCell className="text-center font-black text-blue-900 text-lg">
                     {row.pts}
                   </TableCell>
-                  <TableCell className="text-center text-slate-500">
+                  <TableCell className="text-center text-slate-500 font-mono text-xs">
                     {row.nrr}
                   </TableCell>
                 </TableRow>
