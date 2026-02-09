@@ -17,7 +17,7 @@ export const Teams = () => {
     {
       id: 1,
       name: 'Kathmandu Capitals',
-      coach: 'Ramesh Bhatta',
+      // coach: 'Ramesh Bhatta',
       cardBg: 'bg-blue-50',
 
       squad: [
@@ -47,7 +47,7 @@ export const Teams = () => {
     {
       id: 2,
       name: 'Lumbini Monks',
-      coach: 'Sunil Shrestha',
+      // coach: 'Sunil Shrestha',
       cardBg: 'bg-emerald-50',
 
       squad: [
@@ -72,20 +72,20 @@ export const Teams = () => {
         { name: 'Sakshyam Shakya' },
         { name: 'Prem Gupta' },
       ],
-      headCoach: 'Antim Thapa',
+      //head coach: 'Antim Thapa',
 
     },
     {
       id: 3,
       name: 'Madhesh Royals',
-      coach: 'Anil Gurung',
+      // coach: 'Anil Gurung',
       cardBg: 'bg-purple-50',
       squad: [{ name: 'Player A (C)' }, { name: 'Player B' }],
     },
     {
       id: 4,
       name: 'SudurPaschim Rising',
-      coach: 'Binod Das',
+      // coach: 'Binod Das',
       cardBg: 'bg-orange-50',
       squad: [
         { name: 'Anil Rawat' },
@@ -286,11 +286,6 @@ export const Teams = () => {
                       </DialogDescription>
                     </DialogHeader>
 
-                    {team.coach && (
-                      <div className="mt-4 flex items-center gap-2 text-sm font-medium">
-                        <User className="h-4 w-4" /> Coach: {team.coach}
-                      </div>
-                    )}
                   </div>
 
                   {/* Squad */}
