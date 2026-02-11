@@ -11,7 +11,7 @@ type ScheduleProps = {
 
 export const Schedule = ({ showAll = false }: ScheduleProps) => {
   const allMatches = [
-    { id: 1, date: '28TH MAGH, 2082', time: '8:00 AM', t1: 'BAGMATI', t2: 'SUDURPASCHIM', liveLink: 'hel', status: 'upcoming' },
+    { id: 1, date: '28TH MAGH, 2082', time: '8:00 AM', t1: 'BAGMATI', t2: 'SUDURPASCHIM', liveLink: 'https://www.youtube.com/watch?v=8N0Gp1thfeU', status: 'Live' },
     { id: 2, date: '28TH MAGH, 2082', time: '1:00 PM', t1: 'KATHMANDU', t2: 'GANDAKI', liveLink: '', status: 'Upcoming' },
     { id: 3, date: '29TH MAGH, 2082', time: '9:00 AM', t1: 'GANDAKI', t2: 'KOSHI', liveLink: '', status: 'Upcoming' },
     { id: 4, date: '29TH MAGH, 2082', time: '1:00 PM', t1: 'SUDURPASCHIM', t2: 'MADHESH', liveLink: '', status: 'Upcoming' },

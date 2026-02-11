@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogTrigger,
+  DialogClose
 } from '@/app/components/ui/dialog';
 import { Button } from '@/app/components/ui/button';
 
@@ -352,11 +353,11 @@ export const Teams = () => {
                     )}
                   </div>
 
-                  <div className="p-6 border-t bg-slate-50">
-                    <Button className="w-full rounded-xl font-bold">
-                      Close
+                  <DialogClose asChild>
+                    <Button className="w-full rounded-xl font-bold ">
+                      <p className='text-black'>Close</p>
                     </Button>
-                  </div>
+                  </DialogClose>
                 </DialogContent>
               </Dialog>
             );

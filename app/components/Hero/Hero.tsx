@@ -22,14 +22,14 @@ export const Hero = () => {
     'province/karnali.jpg',
     'province/lumbini.jpg',
     'province/madhesh.jpg',
-//hel
+    //hel
 
   ];
   const [openPop, setOpenPop] = useState(false);
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-50">
 
-      <NewsPopup images={images} open={openPop} onClose={() => setOpenPop(false)}/>
+      <NewsPopup images={images} open={openPop} onClose={() => setOpenPop(false)} />
       {/* Background Shapes */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
@@ -44,7 +44,7 @@ export const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-       
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           {/* Text Content */}
@@ -54,14 +54,14 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-{/* 
-            <div className="inline-flex items-center gap-2 bg-white border border-slate-200 shadow-sm px-4 py-2 rounded-full mb-6">
+
+            <a href="https://www.youtube.com/watch?v=8N0Gp1thfeU" target='_blanck'  className="inline-flex items-center gap-2 bg-white border border-slate-200 shadow-sm px-4 py-2 rounded-full mb-6">
               <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
               <span className="text-slate-600 text-xs font-bold uppercase tracking-widest">
-                Season 2082 • Live Now
+                We are Live Now
               </span>
-
-            </div> */}
+              <ArrowRight />
+            </a>
 
             <h1 className="text-5xl lg:text-7xl font-black text-slate-900 mb-6 leading-[1.1] tracking-tight">
               NEPAL'S PREMIER <br />
@@ -87,10 +87,10 @@ export const Hero = () => {
                   Match Schedule <ChevronRight className="ml-2 h-5 w-5" />
                 </div>
               </Button>
-               <div className='flex items-center justify-center pt-4'>
+              <div className='flex items-center justify-center pt-4'>
 
-          
-        </div>
+
+              </div>
               {/* <Button
                 variant="outline"
                 asChild
@@ -109,13 +109,13 @@ export const Hero = () => {
                 className="bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 px-8 py-7 rounded-2xl font-bold text-lg transition-all hover:border-slate-300"
               >
                 <div
-                   onClick={()=>{setOpenPop(true)}}
+                  onClick={() => { setOpenPop(true) }}
                   className="cursor-pointer"
                 >
                   Provincial Team Selection
                 </div>
               </Button>
-              
+
             </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-8 border-t border-slate-200 pt-8">
