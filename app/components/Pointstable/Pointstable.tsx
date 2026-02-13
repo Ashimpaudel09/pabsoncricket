@@ -23,14 +23,14 @@ interface TeamStat {
    2. EDITABLE DATA (ONLY UPDATE THIS)
 ========================= */
 const teamStats: Record<string, TeamStat> = {
-  'Kathmandu Capitals':   { w: 1, l: 0, nrr: '0.000' },
+ 'Kathmandu Capitals':   { w: 1, l: 0, nrr: '0.5882' },
   'Lumbini Monks':        { w: 0, l: 0, nrr: '0.000' },
-  'Madhesh Royals':       { w: 0, l: 0, nrr: '0.000' },
-  'SudurPaschim Rising':  { w: 0, l: 1, nrr: '0.00' },
-  'Bagmati Challengers': { w: 1, l: 0, nrr: '0.00' },
+  'Madhesh Royals':       { w: 1, l: 0, nrr: '2.9796' },
+  'SudurPaschim Rising':  { w: 0, l: 2, nrr: '-1.5421' },
+  'Bagmati Challengers': { w: 1, l: 0, nrr: '0.3034' },
   'Karnali HighLanders':  { w: 0, l: 0, nrr: '0.000' },
-  'Gandaki Eagles':       { w: 0, l: 1, nrr: '0.000' },
-  'Koshi Strikers':       { w: 0, l: 0, nrr: '0.000' },
+  'Gandaki Eagles':       { w: 1, l: 1, nrr: '0.3784' },
+  'Koshi Strikers':       { w: 0, l: 1, nrr: '-1.2000' },
 };
 
 /* =========================

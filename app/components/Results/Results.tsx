@@ -31,6 +31,29 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       venue: 'T.U. Ground',
       link: 'https://www.youtube.com/watch?v=jpcbFiDpJqo'
     },
+    {
+      id: 3,
+      date: 'Magh 29',
+      team1: 'Gandaki Eagles',
+      team2: 'Koshi Strikers',
+      score1: '87/10 (18.2 overs)',
+      score2: '63/10 (16.3 overs)',
+      winner: 'PABSON GANDAKI won by 24 Runs',
+      mom: 'Tapendra Bista (PABSON Kathmandu) - 5 wickets for 25 runs in 4 overs',
+      venue: 'T.U. Ground',
+      link: 'https://www.youtube.com/live/hDAhB4xRm6o?si=YkD8QGRnGX-tMvyy'
+    },
+    {
+      id: 4,
+      date: 'Magh 29',
+      team1: 'SudurPaschim Rising',
+      team2: 'Madhesh Royals',
+      score1: '87/10 (18.2 overs)',
+      score2: '63/10 (16.3 overs)',
+      winner: 'PABSON GANDAKI won by 24 Runs',
+      // mom: 'Tapendra Bista (PABSON Kathmandu) - 5 wickets for 25 runs in 4 overs',
+      link: 'https://www.youtube.com/live/QvNLL2gZD1U?si=__8YgUKFIG5tSQHq'
+    },
   ];
 
   const results = showAll ? allResults : allResults.slice(0, 3);
