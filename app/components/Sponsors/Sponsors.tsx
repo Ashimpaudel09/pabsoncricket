@@ -70,7 +70,7 @@ export const Sponsors = () => {
         </div>
 
         {/* Sponsors Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-8">
           {sponsorLogos.map((logo, index) => (
             <div
               key={index}
@@ -81,7 +81,7 @@ export const Sponsors = () => {
               <img
                 src={logo}
                 alt="Sponsor Logo"
-                className="max-h-16 object-contain grayscale hover:grayscale-0 transition duration-300"
+                className="max-h-16 object-contain  transition duration-300"
               />
             </div>
           ))}

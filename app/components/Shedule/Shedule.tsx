@@ -53,8 +53,8 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '9:00 AM',
       t1: 'KOSHI',
       t2: 'LUMBINI',
-      liveLink: 'https://www.youtube.com/live/QvNLL2gZD1U',
-      status: 'Live',
+      liveLink: 'https://www.youtube.com/live/nOdFU8Am9Ec?si=r9huGxfB9QHmMaS7',
+      status: 'Completed',
     },
     {
       id: 6,
@@ -62,8 +62,8 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '1:00 PM',
       t1: 'MADHESH',
       t2: 'KARNALI',
-      liveLink: '',
-      status: 'Upcoming',
+      liveLink: 'https://www.youtube.com/live/2Qc3ze8_ZAM?si=_hkOGKi8hxRr64tP',
+      status: 'Completed',
     },
     {
       id: 7,
@@ -71,8 +71,8 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '9:00 AM',
       t1: 'LUMBINI',
       t2: 'KATHMANDU',
-      liveLink: '',
-      status: 'Upcoming',
+      liveLink: 'https://www.youtube.com/watch?v=pq1YWxE5CW0',
+      status: 'Completed',
     },
     {
       id: 8,
@@ -80,8 +80,8 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '1:00 PM',
       t1: 'KARNALI',
       t2: 'BAGMATI',
-      liveLink: '',
-      status: 'Upcoming',
+      liveLink: 'https://www.youtube.com/watch?v=w6rmTatPGwE',
+      status: 'Completed',
     },
     {
       id: 9,
@@ -101,10 +101,53 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       liveLink: '',
       status: 'Upcoming',
     },
+    {
+      id: 11,
+      date: '5 FALGUN, 2082',
+      time: '9:00 AM',
+      t1: 'GROUP A TOPPER',
+      t2: 'GROUP B RUNNER-UP',
+      liveLink: '',
+      status: 'Upcoming',
+      type: 'Semi-Final 1'
+    },
+    {
+      id: 12,
+      date: '5 FALGUN, 2082',
+      time: '1:00 PM',
+      t1: 'GROUP B TOPPER',
+      t2: 'GROUP A RUNNER-UP',
+      liveLink: '',
+      status: 'Upcoming',
+      type: 'Semi-Final 2'
+    },
+    {
+      id: 13,
+      date: '6 FALGUN, 2082',
+      time: '9:00 AM',
+      t1: 'SEMI-FINALS 1 WINNER',
+      t2: 'SEMI-FINALS 2 WINNER',
+      liveLink: '',
+      status: 'Upcoming',
+      type: 'Finals'
+    },
   ];
 
-  const matches = showAll ? allMatches : allMatches.slice(4, 8);
-  const getLogoPath = (name: string) => `/Team/${name.toLowerCase()}.jpeg`;
+  const matches = showAll ? allMatches : allMatches.slice(8, 12);
+  const getLogoPath = (name: string) => {
+    // List of known teams that have specific logos
+    const knownTeams = [
+      'BAGMATI', 'SUDURPASCHIM', 'KATHMANDU', 'GANDAKI', 
+      'KOSHI', 'MADHESH', 'LUMBINI', 'KARNALI'
+    ];
+
+    // If the team is known, return its specific logo, otherwise return the tbd placeholder
+    if (knownTeams.includes(name.toUpperCase())) {
+      return `/Team/${name.toLowerCase()}.jpeg`;
+    }
+    
+    return '/Team/tbd.jpeg'; // Path to your placeholder image
+  };
 
   const getTeamAccent = (name: string) => {
     const accents: Record<string, string> = {
@@ -224,9 +267,10 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
                   {m.liveLink && (
                     <button
                       onClick={() => window.open(m.liveLink, '_blank')}
-                      className="ml-2 bg-slate-900 text-white p-2 md:p-1.5 rounded-md hover:bg-red-600 transition-colors"
+                      className="ml-2 bg-slate-900 text-white p-2 md:p-1.5 rounded-md hover:bg-red-600 transition-colors flex text-xs"
                     >
-                      <Play size={10} fill="white" />
+                      <Play size={14} fill="white" />
+                      Match Highlights
                     </button>
                   )}
                 </div>

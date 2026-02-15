@@ -18,10 +18,20 @@ export const Gallery = ({ showAll = false }: GalleryProps) => {
   const allItems: GalleryItem[] = [
     { id: 1, imageUrl: '/gallery/1.jpg' },
     { id: 2, imageUrl: '/gallery/2.jpg' },
-    // { id: 3, imageUrl: '/gallery/3.jpg' },
-    // { id: 4, imageUrl: '/gallery/4.jpg' },
-    // { id: 5, imageUrl: '/gallery/5.jpg' },
-    // { id: 6, imageUrl: '/gallery/6.jpg' },
+    { id: 3, imageUrl: '/gallery/3.jpg' },
+    { id: 4, imageUrl: '/gallery/4.jpg' },
+    { id: 5, imageUrl: '/gallery/5.jpg' },
+    { id: 6, imageUrl: '/gallery/6.jpg' },
+    { id: 5, imageUrl: '/gallery/7.jpg' },
+    { id: 6, imageUrl: '/gallery/8.jpg' },
+    { id: 5, imageUrl: '/gallery/9.jpg' },
+    { id: 6, imageUrl: '/gallery/10.jpg' },
+    { id: 5, imageUrl: '/gallery/11.jpg' },
+    { id: 6, imageUrl: '/gallery/12.jpg' },
+    // { id: 5, imageUrl: '/gallery/13.jpg' },
+    // { id: 6, imageUrl: '/gallery/14.jpg' },
+    // { id: 5, imageUrl: '/gallery/15.jpg' },
+    // { id: 6, imageUrl: '/gallery/16.jpg' },
   ];
 
   const items = showAll ? allItems : allItems.slice(0, 8);

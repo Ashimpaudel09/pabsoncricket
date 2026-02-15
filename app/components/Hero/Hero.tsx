@@ -28,8 +28,6 @@ export const Hero = () => {
   const [openPop, setOpenPop] = useState(false);
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-50">
-
-      <NewsPopup images={images} open={openPop} onClose={() => setOpenPop(false)} />
       {/* Background Shapes */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
@@ -91,7 +89,7 @@ export const Hero = () => {
 
 
               </div>
-              {/* <Button
+              <Button
                 variant="outline"
                 asChild
                 className="bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 px-8 py-7 rounded-2xl font-bold text-lg transition-all hover:border-slate-300"
@@ -102,8 +100,8 @@ export const Hero = () => {
                 >
                   Points Table
                 </div>
-              </Button> */}
-              <Button
+              </Button>
+              {/* <Button
                 variant="outline"
                 asChild
                 className="bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 px-8 py-7 rounded-2xl font-bold text-lg transition-all hover:border-slate-300"
@@ -114,7 +112,7 @@ export const Hero = () => {
                 >
                   Provincial Team Selection
                 </div>
-              </Button>
+              </Button> */}
 
             </div>
 

@@ -38,7 +38,7 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       team2: 'Koshi Strikers',
       score1: '87/10 (18.2 overs)',
       score2: '63/10 (16.3 overs)',
-      winner: 'PABSON GANDAKI won by 24 Runs',
+      winner: 'Gandaki Eagles won by 24 Runs',
       mom: 'Tapendra Bista (PABSON Kathmandu) - 5 wickets for 25 runs in 4 overs',
       venue: 'T.U. Ground',
       link: 'https://www.youtube.com/live/hDAhB4xRm6o?si=YkD8QGRnGX-tMvyy'
@@ -48,15 +48,62 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       date: 'Magh 29',
       team1: 'SudurPaschim Rising',
       team2: 'Madhesh Royals',
-      score1: '87/10 (18.2 overs)',
-      score2: '63/10 (16.3 overs)',
-      winner: 'PABSON GANDAKI won by 24 Runs',
+      score1: '79/10 (18.0 overs)',
+      score2: '82/2 (11.5 overs)',
+      winner: 'Madhesh Royals won by 8 wickets',
       // mom: 'Tapendra Bista (PABSON Kathmandu) - 5 wickets for 25 runs in 4 overs',
       link: 'https://www.youtube.com/live/QvNLL2gZD1U?si=__8YgUKFIG5tSQHq'
     },
+    {
+      id: 5,
+      date: 'Falgun 1',
+      team1: 'Koshi Strikers',
+      team2: 'Lumbini Monks',
+      score1: '149/5 (20 overs)',
+      score2: '153/6 (19.1 overs)',
+      winner: 'Lumbini Monks won by 4 wickets',
+      mom: 'Basudev yadav (Lumbini Monks) - 31 runs with bat and 2 wickets with ball',
+      link: 'https://www.youtube.com/live/nOdFU8Am9Ec?si=r9huGxfB9QHmMaS7'
+    },
+    {
+      id: 6,
+      date: 'Falgun 1',
+      team1: 'Karnali HighLanders',
+      team2: 'Madhesh Royals',
+      score1: '23/10 (10.5 overs)',
+      score2: '24/0 (1.2 overs)',
+      winner: 'Madhesh Royals won by 10 Wickets',
+      mom: 'Khilraj Sarraf (Madhesh Royals) - 5 wickets in 4 overs',
+      link: 'https://www.youtube.com/live/2Qc3ze8_ZAM?si=_hkOGKi8hxRr64tP'
+    },
+    {
+      id: 7,
+      date: 'Falgun 2',
+      team1: 'Lumbini Monks',
+      team2: 'Kathmandu Capitals',
+      score1: '117/6 (20.0 overs)',
+      score2: '110/9 (20.0 overs)',
+      winner: 'Lumbini Monks won by 7 Runs',
+      mom: 'Prem Gupta (Lumbini Monks) - 15 runs with bat and 2 wickets with ball',
+      link: 'https://www.youtube.com/watch?v=pq1YWxE5CW0'
+    },
+    {
+      id: 8,
+      date: 'Falgun 2',
+      team1: 'Bagmati Challengers',
+      team2: 'Karnali HighLanders',
+      score1: '196/7 (20.0 overs)',
+      score2: '80/10 (17.1 overs)',
+      winner: 'Bagmati Challengers won by 116 Runs',
+      mom: 'Bishal Ayer (PABSON Bagmati) - 97 Runs off 61 Balls',
+      link: 'https://www.youtube.com/watch?v=w6rmTatPGwE'
+    },
   ];
 
-  const results = showAll ? allResults : allResults.slice(0, 3);
+  const sortedResults = [...allResults].sort((a, b) => b.id - a.id);
+
+const results = showAll ? sortedResults : sortedResults.slice(0, 3);
+
 
   const getTeamColor = (name: string) => {
     const first = name.split(' ')[0].toUpperCase();
@@ -131,7 +178,7 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
                 <div className="flex items-center gap-2">
                   <Trophy size={12} className="text-amber-500" />
                   <span className="text-[10px] font-bold text-slate-600 italic">
-                    {r.winner.split(' ')[0]} won by {r.score1 === '145/4' ? '5 runs' : '5 wickets'}
+                    {r.winner} won by {r.score1 === '145/4' ? '5 runs' : '5 wickets'}
                   </span>
                 </div>
                 

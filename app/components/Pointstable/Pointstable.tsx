@@ -10,138 +10,170 @@ import {
   TableRow,
 } from '@/app/components/ui/table';
 
-/* =========================
-   1. Team Stat Interface
-========================= */
 interface TeamStat {
-  w: number;   // Wins
-  l: number;   // Losses
-  nrr: string; // Net Run Rate
+  group: 'A' | 'B';
+  w: number;
+  l: number;
+  nrr: string;
 }
 
 /* =========================
-   2. EDITABLE DATA (ONLY UPDATE THIS)
+   EDIT ONLY THIS DATA
 ========================= */
+
 const teamStats: Record<string, TeamStat> = {
- 'Kathmandu Capitals':   { w: 1, l: 0, nrr: '0.5882' },
-  'Lumbini Monks':        { w: 0, l: 0, nrr: '0.000' },
-  'Madhesh Royals':       { w: 1, l: 0, nrr: '2.9796' },
-  'SudurPaschim Rising':  { w: 0, l: 2, nrr: '-1.5421' },
-  'Bagmati Challengers': { w: 1, l: 0, nrr: '0.3034' },
-  'Karnali HighLanders':  { w: 0, l: 0, nrr: '0.000' },
-  'Gandaki Eagles':       { w: 1, l: 1, nrr: '0.3784' },
-  'Koshi Strikers':       { w: 0, l: 1, nrr: '-1.2000' },
+  // ================= GROUP A =================
+  'Lumbini Monks': {
+    group: 'A',
+    w: 2,
+    l: 0,
+    nrr: '0.4186',
+  },
+  'Gandaki Eagles': {
+    group: 'A',
+    w: 1,
+    l: 1,
+    nrr: '0.3784',
+  },
+  'Kathmandu Capitals': {
+    group: 'A',
+    w: 1,
+    l: 1,
+    nrr: '0.0811',
+  },
+  'Koshi Strikers': {
+    group: 'A',
+    w: 0,
+    l: 2,
+    nrr: '-0.8277',
+  },
+
+  // ================= GROUP B =================
+  'Madhesh Royals': {
+    group: 'B',
+    w: 2,
+    l: 0,
+    nrr: '5.5006',
+  },
+  'Bagmati Challengers': {
+    group: 'B',
+    w: 2,
+    l: 0,
+    nrr: '3.0831',
+  },
+  'SudurPaschim Rising': {
+    group: 'B',
+    w: 0,
+    l: 2,
+    nrr: '-1.5421',
+  },
+  'Karnali HighLanders': {
+    group: 'B',
+    w: 0,
+    l: 2,
+    nrr: '-7.7375',
+  },
 };
 
-/* =========================
-   3. POINTS TABLE COMPONENT
-========================= */
-export const PointsTable = () => {
+const groupColors = {
+  A: 'bg-red-600',
+  B: 'bg-red-600',
+};
 
-  /* ---- Derived Stats (AUTO) ---- */
-  const displayData = Object.keys(teamStats).map((name) => {
-    const { w, l, nrr } = teamStats[name];
+const PointsTable = () => {
+  const groups = ['A', 'B'] as const;
 
-    const p = w + l;      // Matches Played
-    const pts = w * 2;    // 2 points per win
+  const buildGroupData = (group: 'A' | 'B') => {
+    return Object.keys(teamStats)
+      .filter((name) => teamStats[name].group === group)
+      .map((name) => {
+        const { w, l, nrr } = teamStats[name];
+        const p = w + l;
+        const pts = w * 2;
 
-    return {
-      name,
-      logo: `/Team/${name.split(' ')[0].toLowerCase()}.jpeg`,
-      p,
-      w,
-      l,
-      pts,
-      nrr,
-    };
-  });
-
-  /* ---- Sorting: Points → NRR ---- */
-  const sortedData = [...displayData].sort((a, b) => {
-    if (b.pts !== a.pts) return b.pts - a.pts;
-    return parseFloat(b.nrr) - parseFloat(a.nrr);
-  });
+        return {
+          name,
+          p,
+          w,
+          l,
+          pts,
+          nrr,
+        };
+      })
+      .sort((a, b) => {
+        if (b.pts !== a.pts) return b.pts - a.pts;
+        return parseFloat(b.nrr) - parseFloat(a.nrr);
+      });
+  };
 
   return (
-    <section id="points-table" className="py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 bg-gradient-to-br from-red-600 to-orange-500">
+      <div className="max-w-5xl mx-auto space-y-16 px-4">
 
-        {/* Header */}
-        <div className="text-center mb-10">
-          <h2 className="text-blue-600 font-bold uppercase tracking-widest mb-2 text-sm">
-            Standings
-          </h2>
-          <h3 className="text-4xl font-black text-slate-900">
-            Points Table
-          </h3>
-          <p className="text-slate-500 mt-2 text-sm italic">
-            Automatically calculated based on match results
-          </p>
-        </div>
+        {groups.map((group) => {
+          const data = buildGroupData(group);
 
-        {/* Table */}
-        <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl">
-          <Table>
-            <TableHeader className="bg-slate-50">
-              <TableRow>
-                <TableHead className="text-center w-[70px]">Pos</TableHead>
-                <TableHead>Team</TableHead>
-                <TableHead className="text-center">P</TableHead>
-                <TableHead className="text-center">W</TableHead>
-                <TableHead className="text-center">L</TableHead>
-                <TableHead className="text-center">Pts</TableHead>
-                <TableHead className="text-center">NRR</TableHead>
-              </TableRow>
-            </TableHeader>
+          return (
+            <div key={group} className="bg-white rounded-xl shadow-2xl overflow-hidden">
 
-            <TableBody>
-              {sortedData.map((row, index) => (
-                <TableRow
-                  key={row.name}
-                  className="hover:bg-slate-50/60 transition"
-                >
-                  {/* Position */}
-                  <TableCell className="text-center font-bold text-slate-400">
-                    {index + 1}
-                  </TableCell>
+              {/* GROUP HEADER */}
+              <div className={`${groupColors[group]} text-white px-6 py-4`}>
+                <h2 className="text-xl font-bold tracking-widest">
+                  GROUP {group}
+                </h2>
+              </div>
 
-                  {/* Team */}
-                  <TableCell className="font-bold text-slate-900">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center overflow-hidden shadow-sm">
-                        <img
-                          src={row.logo}
-                          alt={row.name}
-                          className="w-full h-full object-contain"
-                          onError={(e) =>
-                            ((e.target as HTMLImageElement).style.opacity = '0')
-                          }
-                        />
-                      </div>
-                      {row.name}
-                    </div>
-                  </TableCell>
+              {/* TABLE */}
+              <Table>
+                <TableHeader className="bg-yellow-400 text-black">
+                  <TableRow>
+                    <TableHead>#</TableHead>
+                    <TableHead>TEAM</TableHead>
+                    <TableHead className="text-center">MATCH</TableHead>
+                    <TableHead className="text-center">WON</TableHead>
+                    <TableHead className="text-center">LOST</TableHead>
+                    <TableHead className="text-center">PTS</TableHead>
+                    <TableHead className="text-center">NET RR</TableHead>
+                  </TableRow>
+                </TableHeader>
 
-                  {/* Stats */}
-                  <TableCell className="text-center">{row.p}</TableCell>
-                  <TableCell className="text-center font-semibold text-green-600">
-                    {row.w}
-                  </TableCell>
-                  <TableCell className="text-center font-semibold text-red-500">
-                    {row.l}
-                  </TableCell>
-                  <TableCell className="text-center font-black text-blue-900 text-lg">
-                    {row.pts}
-                  </TableCell>
-                  <TableCell className="text-center text-slate-500 font-mono text-xs">
-                    {row.nrr}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </div>
+                <TableBody>
+                  {data.map((team, index) => (
+                    <TableRow
+                      key={team.name}
+                      className={
+                        index === 0
+                          ? 'bg-yellow-100 font-semibold'
+                          : 'hover:bg-gray-50'
+                      }
+                    >
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell className="font-bold">
+                        {team.name}
+                      </TableCell>
+                      <TableCell className="text-center">{team.p}</TableCell>
+                      <TableCell className="text-center text-green-600 font-bold">
+                        {team.w}
+                      </TableCell>
+                      <TableCell className="text-center text-red-600 font-bold">
+                        {team.l}
+                      </TableCell>
+                      <TableCell className="text-center font-black">
+                        {team.pts}
+                      </TableCell>
+                      <TableCell className="text-center font-mono">
+                        {team.nrr}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          );
+        })}
       </div>
     </section>
   );
 };
+
+export default PointsTable;
