@@ -12,16 +12,16 @@ import { Results } from './components/Results/Results';
 import NewsPopup from './components/News/NewsPopup';
 
 const Home = () => {
-  const images = [
-    "/news/1.jpg"
-  ];
+  // const images = [
+  //   "/news/1.jpg"
+  // ];
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
 
       {/* <NewsPopup images={images}   /> */}
       <Navbar />
-      <NewsPopup images={images} />
+      {/* <NewsPopup images={images} /> */}
       <section id="hero">
         {/* Hero should contain the ONLY H1 */}
         <Hero />

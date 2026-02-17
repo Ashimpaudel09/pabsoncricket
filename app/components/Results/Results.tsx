@@ -98,11 +98,57 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       mom: 'Bishal Ayer (PABSON Bagmati) - 97 Runs off 61 Balls',
       link: 'https://www.youtube.com/watch?v=w6rmTatPGwE'
     },
+    {
+      id: 9,
+      date: 'Falgun 3',
+      team1: 'Kathmandu Capitals',
+      team2: 'Koshi Strikers',
+      score1: '142/5 (20.0 overs)',
+      score2: '133/9 (20.0 overs)',
+      winner: 'Kathmandu Capitals won by 9 runs',
+      mom: 'Tapendra Bista (PABSON Kathmandu) - 51 runs off 44 balls* (Not Out)',
+    
+      link: 'https://www.youtube.com/live/vAB1qOopBQo?si=FYm9uWVlXhk-luzM'
+    }, {
+      id: 10,
+      date: 'Falgun 3',
+      team1: 'Madhesh Royals',
+      team2: 'Bagmati Challengers',
+      score1: '114/9 (20.0 overs)',
+      score2: '96/9 (17.1 overs)',
+      winner: 'Madhesh Royals won by 18 runs',
+      mom: 'Khilraj Sarraf (Madhesh Royals) - 25 Runs with bat and 2 wickets with ball',
+      link: 'https://www.youtube.com/live/zp7rUVH7mow?si=u9um_FPWaxgfrhVd'
+    },
+    {
+      id: 11,
+      date: 'Falgun 4',
+      team1: 'SudurPaschim Rising',
+      team2: 'Karnali HighLanders',
+      score1: '160/5 (20.0 overs)',
+      score2: '90/5 (20.0 overs)',
+      winner: 'SudurPaschim Rising won by 70 runs',
+      mom: 'Sudarshan Pant (SudurPaschim Rising) - 51 Runs off 39 Balls* (Not Out)',
+   
+      link: 'https://www.youtube.com/live/_d7UHYHqo0k?si=zhnnXFXyXb0_13fS' // Add link when available
+    },
+    {
+      id: 12,
+      date: 'Falgun 4',
+      team1: 'Gandaki Eagles',
+      team2: 'Lumbini Monks',
+      score1: '84/10 (20.0 overs)',
+      score2: '86/5 (18.0 overs)',
+      winner: 'Lumbini Monks won by 5 wickets',
+      mom: 'Prem Gupta (Lumbini Monks) - 3 wickets for 16 runs in 4 overs',
+     
+      link: 'https://www.youtube.com/live/dvsIp_4_xmU?si=36LyRDwhe0ckUpGl' // Add link when available
+    },
   ];
 
   const sortedResults = [...allResults].sort((a, b) => b.id - a.id);
 
-const results = showAll ? sortedResults : sortedResults.slice(0, 3);
+  const results = showAll ? sortedResults : sortedResults.slice(0, 3);
 
 
   const getTeamColor = (name: string) => {
@@ -123,7 +169,7 @@ const results = showAll ? sortedResults : sortedResults.slice(0, 3);
   return (
     <section className="py-10 bg-white">
       <div className="max-w-3xl mx-auto px-4">
-        
+
         {/* Compact Header */}
         <div className="flex items-end justify-between mb-8 border-b border-slate-100 pb-4">
           <div>
@@ -140,7 +186,7 @@ const results = showAll ? sortedResults : sortedResults.slice(0, 3);
         <div className="space-y-3">
           {results.map((r) => (
             <div key={r.id} className="group relative bg-white border border-slate-100 rounded-xl p-4 shadow-sm hover:border-blue-100 transition-all">
-              
+
               {/* Top Row: Date & Venue */}
               <div className="flex justify-between items-center mb-4 text-[9px] font-bold text-slate-400 uppercase tracking-wider">
                 <span className="flex items-center gap-1"><Calendar size={10} /> {r.date}</span>
@@ -178,10 +224,10 @@ const results = showAll ? sortedResults : sortedResults.slice(0, 3);
                 <div className="flex items-center gap-2">
                   <Trophy size={12} className="text-amber-500" />
                   <span className="text-[10px] font-bold text-slate-600 italic">
-                    {r.winner} won by {r.score1 === '145/4' ? '5 runs' : '5 wickets'}
+                    {r.winner}
                   </span>
                 </div>
-                
+
                 {r.link && (
                   <button className="bg-slate-900 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors">
                     <Play size={10} fill="currentColor" />

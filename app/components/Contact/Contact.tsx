@@ -5,12 +5,12 @@ const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'info@pcl-u15.com',
+    value: 'kathpabson@gmail.com',
   },
   {
     icon: Phone,
     label: 'Phone',
-    value: '+977-9800000000',
+    value: '+977-9851025511',
   },
   {
     icon: MapPin,

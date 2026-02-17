@@ -90,7 +90,7 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       t1: 'KATHMANDU',
       t2: 'KOSHI',
       liveLink: '',
-      status: 'Upcoming',
+      status: 'Completed',
     },
     {
       id: 10,
@@ -98,31 +98,49 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '1:00 PM',
       t1: 'BAGMATI',
       t2: 'MADHESH',
-      liveLink: '',
-      status: 'Upcoming',
+      liveLink: 'https://www.youtube.com/live/zp7rUVH7mow?si=u9um_FPWaxgfrhVd',
+      status: 'Completed',
     },
     {
       id: 11,
-      date: '5 FALGUN, 2082',
+      date: '4 FALGUN, 2082',
       time: '9:00 AM',
-      t1: 'GROUP A TOPPER',
-      t2: 'GROUP B RUNNER-UP',
-      liveLink: '',
-      status: 'Upcoming',
-      type: 'Semi-Final 1'
+      t1: 'SUDURPASCHIM',
+      t2: 'KARNALI',
+      liveLink: 'https://www.youtube.com/live/_d7UHYHqo0k?si=zhnnXFXyXb0_13fS',
+      status: 'Completed',
     },
     {
       id: 12,
+      date: '4 FALGUN, 2082',
+      time: '1:00 PM',
+      t1: 'GANDAKI',
+      t2: 'LUMBINI',
+      liveLink: 'https://www.youtube.com/live/dvsIp_4_xmU?si=36LyRDwhe0ckUpGl',
+      status: 'Completed',
+    },
+    {
+      id: 13,
+      date: '5 FALGUN, 2082',
+      time: '9:00 AM',
+      t1: 'LUMBINI',
+      t2: 'BAGMATI',
+      liveLink: 'https://www.youtube.com/watch?v=hL00Op0mYA4',
+      status: 'Live',
+      type: 'Semi-Final 1'
+    },
+    {
+      id: 14,
       date: '5 FALGUN, 2082',
       time: '1:00 PM',
-      t1: 'GROUP B TOPPER',
-      t2: 'GROUP A RUNNER-UP',
-      liveLink: '',
+      t1: 'MADHESH',
+      t2: 'KATHMANDU',
+      liveLink: 'https://www.youtube.com/live/dvsIp_4_xmU?si=36LyRDwhe0ckUpGl',
       status: 'Upcoming',
       type: 'Semi-Final 2'
     },
     {
-      id: 13,
+      id: 15,
       date: '6 FALGUN, 2082',
       time: '9:00 AM',
       t1: 'SEMI-FINALS 1 WINNER',
@@ -133,7 +151,7 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
     },
   ];
 
-  const matches = showAll ? allMatches : allMatches.slice(8, 12);
+  const matches = showAll ? allMatches : allMatches.slice(12, 14);
   const getLogoPath = (name: string) => {
     // List of known teams that have specific logos
     const knownTeams = [
