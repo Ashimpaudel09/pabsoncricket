@@ -125,7 +125,7 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '9:00 AM',
       t1: 'LUMBINI',
       t2: 'BAGMATI',
-      liveLink: 'https://www.youtube.com/watch?v=hL00Op0mYA4',
+      liveLink: 'https://www.youtube.com/live/Yf3C9hUoZxo?si=ZVP3iyoL1C57lh7s',
       status: 'Live',
       type: 'Semi-Final 1'
     },
@@ -135,8 +135,8 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       time: '1:00 PM',
       t1: 'MADHESH',
       t2: 'KATHMANDU',
-      liveLink: 'https://www.youtube.com/live/dvsIp_4_xmU?si=36LyRDwhe0ckUpGl',
-      status: 'Upcoming',
+      liveLink: 'https://www.youtube.com/live/xd0qC9vzDo4?si=Q__Dq5gCpt0Eqgp-',
+      status: 'Live',
       type: 'Semi-Final 2'
     },
     {
@@ -265,14 +265,30 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
 
                 <div className="flex items-center gap-2">
                   {m.status.toLowerCase() === 'completed' && (
-                    <span className="text-[10px] font-bold text-slate-500 uppercase italic">
-                      Completed
-                    </span>
+                    <div className="text-[10px] font-bold text-slate-500 uppercase italic flex items-center">
+                      <p>Completed</p>
+                      <button
+                      onClick={() => window.open(m.liveLink, '_blank')}
+                      className="ml-2 bg-slate-900 text-white p-2 md:p-1.5 rounded-md hover:bg-red-600 transition-colors flex text-xs"
+                    >
+                      
+                      <Play size={14} fill="white" />
+                      Match Highlights
+                    </button>
+                    </div>
+                    
                   )}
 
                   {m.status.toLowerCase() === 'live' && (
                     <div className="flex items-center gap-1 text-red-600 animate-pulse font-black text-[10px]">
                       <Circle size={8} fill="currentColor" /> LIVE
+                      <button
+                      onClick={() => window.open(m.liveLink, '_blank')}
+                      className="ml-2 bg-slate-900 text-white p-2 md:p-1.5 rounded-md hover:bg-red-600 transition-colors flex text-xs"
+                    >
+                      <Play size={14} fill="white" />
+                      Watch Live
+                    </button>
                     </div>
                   )}
 
@@ -282,7 +298,7 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
                     </span>
                   )}
 
-                  {m.liveLink && (
+                  {/* {m.liveLink && (
                     <button
                       onClick={() => window.open(m.liveLink, '_blank')}
                       className="ml-2 bg-slate-900 text-white p-2 md:p-1.5 rounded-md hover:bg-red-600 transition-colors flex text-xs"
@@ -290,7 +306,7 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
                       <Play size={14} fill="white" />
                       Match Highlights
                     </button>
-                  )}
+                  )} */}
                 </div>
               </div>
             </div>
