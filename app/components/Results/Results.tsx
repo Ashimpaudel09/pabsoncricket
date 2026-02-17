@@ -144,6 +144,17 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
      
       link: 'https://www.youtube.com/live/dvsIp_4_xmU?si=36LyRDwhe0ckUpGl' // Add link when available
     },
+    {
+      id: 13,
+      date: 'Falgun 5',
+      team1: 'Lumbini Monks',
+      team2: 'Bagmati Challengers',
+      score1: '113/9 (20.0 overs)',
+      score2: '97/7 (20.0 overs)',
+      winner: 'Lumbini Monks won by 16 runs',
+      mom: 'Krishna Panthi (Lumbini Monks) - 3 wickets for 9 runs in 3 overs',
+      link: 'https://www.youtube.com/live/Yf3C9hUoZxo?si=ZVP3iyoL1C57lh7s' // Semi-Final 1
+    },
   ];
 
   const sortedResults = [...allResults].sort((a, b) => b.id - a.id);
