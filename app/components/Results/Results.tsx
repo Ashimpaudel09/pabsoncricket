@@ -161,9 +161,9 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       date: 'Falgun 5',
       team1: 'Kathmandu Capitals',
       team2: 'Madhesh Royals',
-      score1: 'Score TBD', 
-      score2: 'Score TBD',
-      winner: 'Kathmandu Capitals won',
+      score1: '103/7', 
+      score2: '97/9',
+      winner: 'Kathmandu Capitals won by 6 Runs',
       mom: 'Sandeep Saud (PABSON Kathmandu) - 34 runs off 35 balls and 1 wicket',
       // venue: 'T.U. Ground',
       link: 'https://www.youtube.com/live/xd0qC9vzDo4?si=Q__Dq5gCpt0Eqgp-', // Semi-Final 2
