@@ -126,7 +126,7 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       t1: 'LUMBINI',
       t2: 'BAGMATI',
       liveLink: 'https://www.youtube.com/live/Yf3C9hUoZxo?si=ZVP3iyoL1C57lh7s',
-      status: 'Live',
+      status: 'Completed',
       type: 'Semi-Final 1'
     },
     {
