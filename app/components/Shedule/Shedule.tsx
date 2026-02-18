@@ -143,10 +143,10 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       id: 15,
       date: '6 FALGUN, 2082',
       time: '9:00 AM',
-      t1: 'SEMI-FINALS 1 WINNER',
-      t2: 'SEMI-FINALS 2 WINNER',
-      liveLink: '',
-      status: 'Upcoming',
+      t1: 'KATHMANDU',
+      t2: 'LUMBINI',
+      liveLink: 'https://www.youtube.com/watch?v=aiUggr2xPO4',
+      status: 'Live',
       type: 'Finals'
     },
   ];
