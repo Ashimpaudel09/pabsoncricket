@@ -146,12 +146,12 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       t1: 'KATHMANDU',
       t2: 'LUMBINI',
       liveLink: 'https://www.youtube.com/watch?v=aiUggr2xPO4',
-      status: 'Live',
+      status: 'Completed',
       type: 'Finals'
     },
   ];
 
-  const matches = showAll ? allMatches : allMatches.slice(14, 15);
+  const matches = showAll ? allMatches : allMatches.slice(13, 15);
   const getLogoPath = (name: string) => {
     // List of known teams that have specific logos
     const knownTeams = [

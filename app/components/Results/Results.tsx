@@ -170,6 +170,19 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       type: 'Semi-Final 2'
 
     },
+    {
+      id: 15,
+      date: 'Falgun 9',
+      team1: 'Kathmandu Capitals',
+      team2: 'Lumbini Monks',
+      score1: '127/7 (20 overs)',
+      score2: '94/10 (16.5 overs)',
+      winner: 'Kathmandu Capitals won by 33 runs',
+      // mom: 'TBD', // Final POTM details not in snippet
+      // venue: 'T.U. Ground',
+      link: 'https://www.youtube.com/watch?v=aiUggr2xPO4', // Grand Final
+      type: 'Finals'
+    },
   ];
 
   const sortedResults = [...allResults].sort((a, b) => b.id - a.id);

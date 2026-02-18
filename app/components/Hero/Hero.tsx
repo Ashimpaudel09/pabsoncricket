@@ -27,7 +27,10 @@ export const Hero = () => {
   ];
   const [openPop, setOpenPop] = useState(false);
   return (
+    <>
+    
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-slate-50">
+      
       {/* Background Shapes */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
@@ -171,5 +174,6 @@ export const Hero = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };

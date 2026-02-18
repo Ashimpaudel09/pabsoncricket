@@ -10,20 +10,29 @@ import { Gallery } from './components/Gallery/Gallery';
 import { Contact } from './components/Contact/Contact';
 import { Results } from './components/Results/Results';
 import NewsPopup from './components/News/NewsPopup';
+import Champion from './components/Champion/champion';
 
 const Home = () => {
-  // const images = [
-  //   "/news/1.jpg"
-  // ];
+  const images = [
+    "/news/3.jpg",
+    "/news/4.jpg",
+    "/news/5.jpg",
+    "/news/6.jpg",
+    "/news/7.jpg",
+    
+
+  ];
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
 
       {/* <NewsPopup images={images}   /> */}
       <Navbar />
-      {/* <NewsPopup images={images} /> */}
+      <NewsPopup images={images} />
+        
       <section id="hero">
         {/* Hero should contain the ONLY H1 */}
+        <Champion/>
         <Hero />
       </section>
 
