@@ -153,7 +153,22 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
       score2: '97/7 (20.0 overs)',
       winner: 'Lumbini Monks won by 16 runs',
       mom: 'Krishna Panthi (Lumbini Monks) - 3 wickets for 9 runs in 3 overs',
-      link: 'https://www.youtube.com/live/Yf3C9hUoZxo?si=ZVP3iyoL1C57lh7s' // Semi-Final 1
+      link: 'https://www.youtube.com/live/Yf3C9hUoZxo?si=ZVP3iyoL1C57lh7s', // Semi-Final 1
+      type: 'Semi-Final 1'
+    },
+    {
+      id: 14,
+      date: 'Falgun 5',
+      team1: 'Kathmandu Capitals',
+      team2: 'Madhesh Royals',
+      score1: 'Score TBD', 
+      score2: 'Score TBD',
+      winner: 'Kathmandu Capitals won',
+      mom: 'Sandeep Saud (PABSON Kathmandu) - 34 runs off 35 balls and 1 wicket',
+      // venue: 'T.U. Ground',
+      link: 'https://www.youtube.com/live/xd0qC9vzDo4?si=Q__Dq5gCpt0Eqgp-', // Semi-Final 2
+      type: 'Semi-Final 2'
+
     },
   ];
 
@@ -228,6 +243,18 @@ export const Results = ({ showAll = false }: { showAll?: boolean }) => {
                   </h4>
                   <p className="text-lg md:text-xl font-black text-slate-800 tracking-tighter">{r.score2}</p>
                 </div>
+              </div>
+              <div>
+                {r.type && (
+                  <div className="absolute top-0 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full uppercase z-20">
+                    {r.type}
+                  </div>
+                )}
+                {!r.type && (
+                  <div className="absolute top-0 right-0 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full uppercase z-20">
+                   league
+                  </div>
+                )}
               </div>
 
               {/* Winner Banner - Simple Text */}

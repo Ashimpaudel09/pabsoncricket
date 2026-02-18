@@ -136,22 +136,22 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
       t1: 'MADHESH',
       t2: 'KATHMANDU',
       liveLink: 'https://www.youtube.com/live/xd0qC9vzDo4?si=Q__Dq5gCpt0Eqgp-',
-      status: 'Live',
+      status: 'Completed',
       type: 'Semi-Final 2'
     },
     {
       id: 15,
       date: '6 FALGUN, 2082',
       time: '9:00 AM',
-      t1: 'SEMI-FINALS 1 WINNER',
-      t2: 'SEMI-FINALS 2 WINNER',
+      t1: 'KATHMANDU',
+      t2: 'MADHESH',
       liveLink: '',
       status: 'Upcoming',
       type: 'Finals'
     },
   ];
 
-  const matches = showAll ? allMatches : allMatches.slice(12, 14);
+  const matches = showAll ? allMatches : allMatches.slice(14, 15);
   const getLogoPath = (name: string) => {
     // List of known teams that have specific logos
     const knownTeams = [
@@ -249,6 +249,18 @@ export const Schedule = ({ showAll = false }: ScheduleProps) => {
                     />
                   </div>
                 </div>
+              </div>
+              <div>
+                {m.type && (
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-red-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full uppercase z-20">
+                    {m.type}
+                  </div>
+                )}
+                {!m.type && (
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded-full uppercase z-20">
+                    League
+                  </div>
+                )}
               </div>
 
               {/* Info Bar */}
